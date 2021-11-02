@@ -1,52 +1,68 @@
-let numeroUno;
-let numeroDos;
+let botonRegistrar = document.querySelector(".btn-registrar");
 
-for (a = 0; a <= 5; a++) {
+let arrayProductos = [];
+
+function impExterior(valor) {
+  return valor * 1.65
+}
+
+class Hardware {
+  constructor(id, nombre, precio, stock) {
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.stock = stock;
+  }
+}
+
+
+botonRegistrar.addEventListener("click", function(e){
+  e.preventDefault()
   
-  if (a == 1) {
-    pedirNumeros()
-    console.log(`El resultado de la primera operación es ${sumar(numeroUno, numeroDos)}`);
-  }
-  else if (a == 2) {
-    pedirNumeros()
-    console.log(`El resultado de la segunda operación es ${sumar(numeroUno, numeroDos)}`);
-  }
-  else if (a == 3) {
-    pedirNumeros()
-    console.log(`El resultado de la tercera operación es ${sumar(numeroUno, numeroDos)}`);
-  }
-  else if (a == 4) {
-    pedirNumeros()
-    console.log(`El resultado de la cuarta operación es ${sumar(numeroUno, numeroDos)}`);
-  }
-  else if (a == 5) {
-    pedirNumeros()
-    console.log(`El resultado de la quinta operación es ${sumar(numeroUno, numeroDos)}`);
-  }
-}
+  let inputID = document.querySelector(".input-id").value;
+  let inputNombre = document.querySelector(".input-nombre").value;
+  let inputPrecio = document.querySelector(".input-precio").value;
+  let inputStock = document.querySelector(".input-stock").value;
 
-function pedirNumeros(){
-    numeroUno = parseInt(prompt("Ingrese un número"));
-    numeroDos = parseInt(prompt("Ingrese el segundo número"));  
-};
+  
+    let contenedor  = `
+                        <p class="listado-productos">
+                          id: ${inputID}
+                          <br>
+                          Nombre: ${inputNombre}
+                          <br>
+                          Precio: ${impExterior(inputPrecio)}
+                          <br>
+                          Stock: ${inputStock}
+                        <p/>
+                                                                  
+                      `
+  
+  document.querySelector(".productos-registrados").innerHTML += contenedor;
+  
+  arrayProductos.push(new Hardware(inputID, inputNombre, impExterior(inputPrecio), inputStock))
 
-function sumar(numeroUno, numeroDos) {
-  return numeroUno + numeroDos
-}
+  
+
+  console.log(arrayProductos)
+})
+  
+
+ 
 
 
-/*
-let numeroUno;
-let numeroDos;
 
-while(numeroUno || numeroDos == undefined){
-  numeroUno = prompt("ingrese numero uno");
-  numeroDos = prompt("ingrese numero dos");
+  
+  
 
-  console.log(`La suma de los dos números es ${sumar(numeroUno, numeroDos)}`)
-}
+ 
+                                                              
 
-function sumar(numeroUno, numeroDos) {
-  return parseInt(numeroUno) + parseInt(numeroDos)
-}
-*/
+
+
+
+
+
+
+
+
